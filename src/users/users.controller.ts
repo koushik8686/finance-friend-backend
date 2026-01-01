@@ -2,7 +2,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Req, BadRequestException , Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 // import { Prisma } from '@prisma/client';
-import { Prisma } from 'generated/prisma/browser';
+import { Prisma } from '../generated/prisma/client';
 
 @Controller('users')
 export class UsersController {
