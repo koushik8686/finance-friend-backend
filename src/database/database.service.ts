@@ -6,10 +6,7 @@ import { PrismaClient } from '../generated/prisma/client';
 /**
  * Global singleton for Prisma (serverless safe)
  */
-declare global {
-  // eslint-disable-next-line no-var
-  var __prisma: PrismaClient | undefined;
-}
+
 
 @Injectable()
 export class DatabaseService implements OnModuleDestroy {
