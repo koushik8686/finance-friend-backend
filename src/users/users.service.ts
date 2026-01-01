@@ -1,5 +1,5 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
-import { Prisma } from '../generated/prisma/browser';
+import { Prisma } from '../generated/prisma/client';
 import { DatabaseService } from '../database/database.service';
 import axios from 'axios';
 
