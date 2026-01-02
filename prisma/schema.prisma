@@ -14,6 +14,62 @@ model User {
   name      String?
   avatar    String
   balance   Int
+  transactions Transactions[]
+  categories Categories[]
+  party Party[]
   createdAt DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+model Transactions {
+  id          Int      @id @default(autoincrement())
+  amount      Int
+  description String?
+  image String?
+  ai_response String?
+  category    Categories @relation(fields: [categoryId] , references: [id])
+  categoryId  Int
+
+  party       Party @relation(fields: [partyId] , references: [id])
+  partyId     Int 
+
+  type        TransactionType
+
+  time String?
+  location String? 
+  userId      Int   
+  user        User     @relation(fields: [userId], references: [id])
+
+
+
+  createdAt DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Categories {
+  id Int @id @default(autoincrement())
+  name String 
+  userId      Int   
+  user        User     @relation(fields: [userId], references: [id])
+  transactions Transactions[]
+
+  createdAt DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Party{
+  id Int @id @default(autoincrement())
+  name String 
+  userId      Int   
+  user        User     @relation(fields: [userId], references: [id])
+  transactions Transactions[]
+
+    createdAt DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+}
+
+enum TransactionType {
+  Income
+  Expense
 }

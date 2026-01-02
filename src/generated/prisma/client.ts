@@ -42,3 +42,18 @@ export { Prisma }
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Transactions
+ * 
+ */
+export type Transactions = Prisma.TransactionsModel
+/**
+ * Model Categories
+ * 
+ */
+export type Categories = Prisma.CategoriesModel
+/**
+ * Model Party
+ * 
+ */
+export type Party = Prisma.PartyModel
