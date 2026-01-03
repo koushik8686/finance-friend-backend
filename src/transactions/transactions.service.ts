@@ -15,6 +15,7 @@ export class TransactionsService {
       category,
       party,
       type,
+      date,
       time,
       location,
     } = dto;
@@ -70,6 +71,7 @@ export class TransactionsService {
     const transaction = await this.db.client.transactions.create({
       data: {
         amount,
+        date,
         description,
         type,
         time: time ? time : " ",
@@ -99,14 +101,19 @@ export class TransactionsService {
   }
 
   findOne(id: number) {
-  return this.db.client.transactions.findMany({
-    where: { userId: id },
-    include: {
-      category: { select: { name: true } },
-      party: { select: { name: true } },
-    },
-  });
+    return this.db.client.transactions.findMany({
+      where: { userId: id },
+      include: {
+        category: {
+          select: { name: true },
+        },
+        party: {
+          select: { name: true },
+        },
+      },
+    });
   }
+
 
   update(id: number, updateTransactionDto: Prisma.TransactionsUpdateInput) {
     return `This action updates a #${id} transaction`;

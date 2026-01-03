@@ -95,6 +95,7 @@ export const TransactionsScalarFieldEnum = {
   categoryId: 'categoryId',
   partyId: 'partyId',
   type: 'type',
+  date: 'date',
   time: 'time',
   location: 'location',
   userId: 'userId',

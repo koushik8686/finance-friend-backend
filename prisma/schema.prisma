@@ -32,15 +32,14 @@ model Transactions {
 
   party       Party @relation(fields: [partyId] , references: [id])
   partyId     Int 
-
+  
   type        TransactionType
 
+  date String?
   time String?
   location String? 
   userId      Int   
   user        User     @relation(fields: [userId], references: [id])
-
-
 
   createdAt DateTime @default(now())
   updatedAt  DateTime @updatedAt

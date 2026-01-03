@@ -51,6 +51,7 @@ export type TransactionsMinAggregateOutputType = {
   categoryId: number | null
   partyId: number | null
   type: $Enums.TransactionType | null
+  date: string | null
   time: string | null
   location: string | null
   userId: number | null
@@ -67,6 +68,7 @@ export type TransactionsMaxAggregateOutputType = {
   categoryId: number | null
   partyId: number | null
   type: $Enums.TransactionType | null
+  date: string | null
   time: string | null
   location: string | null
   userId: number | null
@@ -83,6 +85,7 @@ export type TransactionsCountAggregateOutputType = {
   categoryId: number
   partyId: number
   type: number
+  date: number
   time: number
   location: number
   userId: number
@@ -117,6 +120,7 @@ export type TransactionsMinAggregateInputType = {
   categoryId?: true
   partyId?: true
   type?: true
+  date?: true
   time?: true
   location?: true
   userId?: true
@@ -133,6 +137,7 @@ export type TransactionsMaxAggregateInputType = {
   categoryId?: true
   partyId?: true
   type?: true
+  date?: true
   time?: true
   location?: true
   userId?: true
@@ -149,6 +154,7 @@ export type TransactionsCountAggregateInputType = {
   categoryId?: true
   partyId?: true
   type?: true
+  date?: true
   time?: true
   location?: true
   userId?: true
@@ -252,6 +258,7 @@ export type TransactionsGroupByOutputType = {
   categoryId: number
   partyId: number
   type: $Enums.TransactionType
+  date: string | null
   time: string | null
   location: string | null
   userId: number
@@ -291,6 +298,7 @@ export type TransactionsWhereInput = {
   categoryId?: Prisma.IntFilter<"Transactions"> | number
   partyId?: Prisma.IntFilter<"Transactions"> | number
   type?: Prisma.EnumTransactionTypeFilter<"Transactions"> | $Enums.TransactionType
+  date?: Prisma.StringNullableFilter<"Transactions"> | string | null
   time?: Prisma.StringNullableFilter<"Transactions"> | string | null
   location?: Prisma.StringNullableFilter<"Transactions"> | string | null
   userId?: Prisma.IntFilter<"Transactions"> | number
@@ -310,6 +318,7 @@ export type TransactionsOrderByWithRelationInput = {
   categoryId?: Prisma.SortOrder
   partyId?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  date?: Prisma.SortOrderInput | Prisma.SortOrder
   time?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -332,6 +341,7 @@ export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
   categoryId?: Prisma.IntFilter<"Transactions"> | number
   partyId?: Prisma.IntFilter<"Transactions"> | number
   type?: Prisma.EnumTransactionTypeFilter<"Transactions"> | $Enums.TransactionType
+  date?: Prisma.StringNullableFilter<"Transactions"> | string | null
   time?: Prisma.StringNullableFilter<"Transactions"> | string | null
   location?: Prisma.StringNullableFilter<"Transactions"> | string | null
   userId?: Prisma.IntFilter<"Transactions"> | number
@@ -351,6 +361,7 @@ export type TransactionsOrderByWithAggregationInput = {
   categoryId?: Prisma.SortOrder
   partyId?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  date?: Prisma.SortOrderInput | Prisma.SortOrder
   time?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -375,6 +386,7 @@ export type TransactionsScalarWhereWithAggregatesInput = {
   categoryId?: Prisma.IntWithAggregatesFilter<"Transactions"> | number
   partyId?: Prisma.IntWithAggregatesFilter<"Transactions"> | number
   type?: Prisma.EnumTransactionTypeWithAggregatesFilter<"Transactions"> | $Enums.TransactionType
+  date?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   time?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   userId?: Prisma.IntWithAggregatesFilter<"Transactions"> | number
@@ -388,6 +400,7 @@ export type TransactionsCreateInput = {
   image?: string | null
   ai_response?: string | null
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   createdAt?: Date | string
@@ -406,6 +419,7 @@ export type TransactionsUncheckedCreateInput = {
   categoryId: number
   partyId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   userId: number
@@ -419,6 +433,7 @@ export type TransactionsUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -437,6 +452,7 @@ export type TransactionsUncheckedUpdateInput = {
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   partyId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -453,6 +469,7 @@ export type TransactionsCreateManyInput = {
   categoryId: number
   partyId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   userId: number
@@ -466,6 +483,7 @@ export type TransactionsUpdateManyMutationInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -481,6 +499,7 @@ export type TransactionsUncheckedUpdateManyInput = {
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   partyId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -507,6 +526,7 @@ export type TransactionsCountOrderByAggregateInput = {
   categoryId?: Prisma.SortOrder
   partyId?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   time?: Prisma.SortOrder
   location?: Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -531,6 +551,7 @@ export type TransactionsMaxOrderByAggregateInput = {
   categoryId?: Prisma.SortOrder
   partyId?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   time?: Prisma.SortOrder
   location?: Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -547,6 +568,7 @@ export type TransactionsMinOrderByAggregateInput = {
   categoryId?: Prisma.SortOrder
   partyId?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   time?: Prisma.SortOrder
   location?: Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -698,6 +720,7 @@ export type TransactionsCreateWithoutUserInput = {
   image?: string | null
   ai_response?: string | null
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   createdAt?: Date | string
@@ -715,6 +738,7 @@ export type TransactionsUncheckedCreateWithoutUserInput = {
   categoryId: number
   partyId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   createdAt?: Date | string
@@ -759,6 +783,7 @@ export type TransactionsScalarWhereInput = {
   categoryId?: Prisma.IntFilter<"Transactions"> | number
   partyId?: Prisma.IntFilter<"Transactions"> | number
   type?: Prisma.EnumTransactionTypeFilter<"Transactions"> | $Enums.TransactionType
+  date?: Prisma.StringNullableFilter<"Transactions"> | string | null
   time?: Prisma.StringNullableFilter<"Transactions"> | string | null
   location?: Prisma.StringNullableFilter<"Transactions"> | string | null
   userId?: Prisma.IntFilter<"Transactions"> | number
@@ -772,6 +797,7 @@ export type TransactionsCreateWithoutCategoryInput = {
   image?: string | null
   ai_response?: string | null
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   createdAt?: Date | string
@@ -788,6 +814,7 @@ export type TransactionsUncheckedCreateWithoutCategoryInput = {
   ai_response?: string | null
   partyId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   userId: number
@@ -827,6 +854,7 @@ export type TransactionsCreateWithoutPartyInput = {
   image?: string | null
   ai_response?: string | null
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   createdAt?: Date | string
@@ -843,6 +871,7 @@ export type TransactionsUncheckedCreateWithoutPartyInput = {
   ai_response?: string | null
   categoryId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   userId: number
@@ -885,6 +914,7 @@ export type TransactionsCreateManyUserInput = {
   categoryId: number
   partyId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   createdAt?: Date | string
@@ -897,6 +927,7 @@ export type TransactionsUpdateWithoutUserInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -914,6 +945,7 @@ export type TransactionsUncheckedUpdateWithoutUserInput = {
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   partyId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -929,6 +961,7 @@ export type TransactionsUncheckedUpdateManyWithoutUserInput = {
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   partyId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -943,6 +976,7 @@ export type TransactionsCreateManyCategoryInput = {
   ai_response?: string | null
   partyId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   userId: number
@@ -956,6 +990,7 @@ export type TransactionsUpdateWithoutCategoryInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -972,6 +1007,7 @@ export type TransactionsUncheckedUpdateWithoutCategoryInput = {
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   partyId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -987,6 +1023,7 @@ export type TransactionsUncheckedUpdateManyWithoutCategoryInput = {
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   partyId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1002,6 +1039,7 @@ export type TransactionsCreateManyPartyInput = {
   ai_response?: string | null
   categoryId: number
   type: $Enums.TransactionType
+  date?: string | null
   time?: string | null
   location?: string | null
   userId: number
@@ -1015,6 +1053,7 @@ export type TransactionsUpdateWithoutPartyInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1031,6 +1070,7 @@ export type TransactionsUncheckedUpdateWithoutPartyInput = {
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1046,6 +1086,7 @@ export type TransactionsUncheckedUpdateManyWithoutPartyInput = {
   ai_response?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  date?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1064,6 +1105,7 @@ export type TransactionsSelect<ExtArgs extends runtime.Types.Extensions.Internal
   categoryId?: boolean
   partyId?: boolean
   type?: boolean
+  date?: boolean
   time?: boolean
   location?: boolean
   userId?: boolean
@@ -1083,6 +1125,7 @@ export type TransactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   categoryId?: boolean
   partyId?: boolean
   type?: boolean
+  date?: boolean
   time?: boolean
   location?: boolean
   userId?: boolean
@@ -1102,6 +1145,7 @@ export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   categoryId?: boolean
   partyId?: boolean
   type?: boolean
+  date?: boolean
   time?: boolean
   location?: boolean
   userId?: boolean
@@ -1121,6 +1165,7 @@ export type TransactionsSelectScalar = {
   categoryId?: boolean
   partyId?: boolean
   type?: boolean
+  date?: boolean
   time?: boolean
   location?: boolean
   userId?: boolean
@@ -1128,7 +1173,7 @@ export type TransactionsSelectScalar = {
   updatedAt?: boolean
 }
 
-export type TransactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "description" | "image" | "ai_response" | "categoryId" | "partyId" | "type" | "time" | "location" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["transactions"]>
+export type TransactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "description" | "image" | "ai_response" | "categoryId" | "partyId" | "type" | "date" | "time" | "location" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["transactions"]>
 export type TransactionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.CategoriesDefaultArgs<ExtArgs>
   party?: boolean | Prisma.PartyDefaultArgs<ExtArgs>
@@ -1161,6 +1206,7 @@ export type $TransactionsPayload<ExtArgs extends runtime.Types.Extensions.Intern
     categoryId: number
     partyId: number
     type: $Enums.TransactionType
+    date: string | null
     time: string | null
     location: string | null
     userId: number
@@ -1600,6 +1646,7 @@ export interface TransactionsFieldRefs {
   readonly categoryId: Prisma.FieldRef<"Transactions", 'Int'>
   readonly partyId: Prisma.FieldRef<"Transactions", 'Int'>
   readonly type: Prisma.FieldRef<"Transactions", 'TransactionType'>
+  readonly date: Prisma.FieldRef<"Transactions", 'String'>
   readonly time: Prisma.FieldRef<"Transactions", 'String'>
   readonly location: Prisma.FieldRef<"Transactions", 'String'>
   readonly userId: Prisma.FieldRef<"Transactions", 'Int'>
