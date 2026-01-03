@@ -120,6 +120,9 @@ export class TransactionsService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} transaction`;
+    return this.db.client.transactions.delete({
+      where: { id },
+    });
   }
+
 }
