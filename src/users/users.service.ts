@@ -83,4 +83,14 @@ export class UsersService {
 
     return { user, token };
   }
+
+  async getCategories(id: string) {
+    const categories = await this.db.client.categories.findMany({
+      where: { userId: Number(id) },
+    });
+    const parties = await this.db.client.party.findMany({
+      where: { userId: Number(id) },
+    });
+    return { categories, parties };
+  }
 }
