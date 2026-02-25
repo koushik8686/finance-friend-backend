@@ -49,7 +49,7 @@ export class TransactionsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTransactionDto: Prisma.TransactionsUpdateInput) {
+  update(@Param('id') id: string, @Body() updateTransactionDto: any) {
     return this.transactionsService.update(+id, updateTransactionDto);
   }
 

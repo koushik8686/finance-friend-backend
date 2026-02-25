@@ -1,5 +1,5 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
-import { Prisma } from '../generated/prisma/client';
+
 import { DatabaseService } from '../database/database.service';
 
 @Injectable()
@@ -115,14 +115,80 @@ export class TransactionsService {
   }
 
 
-  update(id: number, updateTransactionDto: Prisma.TransactionsUpdateInput) {
-    return `This action updates a #${id} transaction`;
-  }
-
-  remove(id: number) {
-    return this.db.client.transactions.delete({
+  async update(id: number, updateTransactionDto: any) {
+    // Find the existing transaction to calculate balance diff
+    const existing = await this.db.client.transactions.findUnique({
       where: { id },
     });
+
+    if (!existing) {
+      throw new BadRequestException('Transaction not found');
+    }
+
+    // Only pick the fields we allow updating
+    const dataToUpdate: any = {};
+    if (updateTransactionDto.amount !== undefined) {
+      dataToUpdate.amount = Number(updateTransactionDto.amount);
+    }
+    if (updateTransactionDto.description !== undefined) {
+      dataToUpdate.description = updateTransactionDto.description;
+    }
+    if (updateTransactionDto.date !== undefined) {
+      dataToUpdate.date = updateTransactionDto.date;
+    }
+    if (updateTransactionDto.time !== undefined) {
+      dataToUpdate.time = updateTransactionDto.time;
+    }
+
+    const updated = await this.db.client.transactions.update({
+      where: { id },
+      data: dataToUpdate,
+      include: {
+        category: { select: { name: true } },
+        party: { select: { name: true } },
+      },
+    });
+
+    // Adjust user balance if amount changed
+    if (dataToUpdate.amount !== undefined && dataToUpdate.amount !== existing.amount) {
+      const diff = dataToUpdate.amount - existing.amount;
+      // If income, increase balance by diff; if expense, decrease balance by diff
+      const balanceChange = existing.type === 'Income' ? diff : -diff;
+      await this.db.client.user.update({
+        where: { id: existing.userId },
+        data: { balance: { increment: balanceChange } },
+      });
+    }
+
+    return updated;
+  }
+
+  async remove(id: number) {
+    // Find the transaction first to reverse balance
+    const transaction = await this.db.client.transactions.findUnique({
+      where: { id },
+    });
+
+    if (!transaction) {
+      throw new BadRequestException('Transaction not found');
+    }
+
+    // Delete the transaction
+    await this.db.client.transactions.delete({
+      where: { id },
+    });
+
+    // Reverse the balance effect on the user
+    const balanceChange = transaction.type === 'Income'
+      ? -transaction.amount   // Remove income: decrease balance
+      : transaction.amount;   // Remove expense: increase balance
+
+    await this.db.client.user.update({
+      where: { id: transaction.userId },
+      data: { balance: { increment: balanceChange } },
+    });
+
+    return { message: 'Transaction deleted successfully' };
   }
 
   async getAnalytics(userId: number, year?: number, month?: number) {
