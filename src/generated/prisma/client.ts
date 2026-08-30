@@ -57,3 +57,8 @@ export type Categories = Prisma.CategoriesModel
  * 
  */
 export type Party = Prisma.PartyModel
+/**
+ * Model Records
+ * 
+ */
+export type Records = Prisma.RecordsModel

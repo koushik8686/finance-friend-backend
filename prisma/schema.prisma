@@ -72,3 +72,13 @@ enum TransactionType {
   Income
   Expense
 }
+
+model Records {
+  id        Int      @id @default(autoincrement())
+  pkg       String
+  amount    String
+  when      BigInt
+  screen    Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

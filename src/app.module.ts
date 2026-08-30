@@ -4,11 +4,12 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
 import { TransactionsModule } from './transactions/transactions.module';
+import { RecordsModule } from './records/records.module';
 import 'dotenv/config';
 
 @Module({
   controllers: [AppController],
   providers: [AppService],
-  imports: [DatabaseModule, UsersModule, TransactionsModule],
+  imports: [DatabaseModule, UsersModule, TransactionsModule, RecordsModule],
 })
 export class AppModule {}

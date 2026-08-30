@@ -387,7 +387,8 @@ export const ModelName = {
   User: 'User',
   Transactions: 'Transactions',
   Categories: 'Categories',
-  Party: 'Party'
+  Party: 'Party',
+  Records: 'Records'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "transactions" | "categories" | "party"
+    modelProps: "user" | "transactions" | "categories" | "party" | "records"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +704,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Records: {
+      payload: Prisma.$RecordsPayload<ExtArgs>
+      fields: Prisma.RecordsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RecordsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RecordsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>
+        }
+        findFirst: {
+          args: Prisma.RecordsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RecordsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>
+        }
+        findMany: {
+          args: Prisma.RecordsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>[]
+        }
+        create: {
+          args: Prisma.RecordsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>
+        }
+        createMany: {
+          args: Prisma.RecordsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RecordsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>[]
+        }
+        delete: {
+          args: Prisma.RecordsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>
+        }
+        update: {
+          args: Prisma.RecordsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>
+        }
+        deleteMany: {
+          args: Prisma.RecordsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RecordsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RecordsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>[]
+        }
+        upsert: {
+          args: Prisma.RecordsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordsPayload>
+        }
+        aggregate: {
+          args: Prisma.RecordsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRecords>
+        }
+        groupBy: {
+          args: Prisma.RecordsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecordsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RecordsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecordsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -797,12 +872,32 @@ export const PartyScalarFieldEnum = {
 export type PartyScalarFieldEnum = (typeof PartyScalarFieldEnum)[keyof typeof PartyScalarFieldEnum]
 
 
+export const RecordsScalarFieldEnum = {
+  id: 'id',
+  pkg: 'pkg',
+  amount: 'amount',
+  when: 'when',
+  screen: 'screen',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RecordsScalarFieldEnum = (typeof RecordsScalarFieldEnum)[keyof typeof RecordsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -819,6 +914,15 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
 
@@ -880,6 +984,34 @@ export type EnumTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$
  * Reference to a field of type 'TransactionType[]'
  */
 export type ListEnumTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BigInt'
+ */
+export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+/**
+ * Reference to a field of type 'BigInt[]'
+ */
+export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -995,6 +1127,7 @@ export type GlobalOmitConfig = {
   transactions?: Prisma.TransactionsOmit
   categories?: Prisma.CategoriesOmit
   party?: Prisma.PartyOmit
+  records?: Prisma.RecordsOmit
 }
 
 /* Types for Logging */
