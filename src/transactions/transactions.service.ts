@@ -103,13 +103,16 @@ export class TransactionsService {
   findOne(id: number) {
     return this.db.client.transactions.findMany({
       where: { userId: id },
-      include: {
-        category: {
-          select: { name: true },
-        },
-        party: {
-          select: { name: true },
-        },
+      select: {
+        id: true,
+        amount: true,
+        description: true,
+        type: true,
+        date: true,
+        time: true,
+        location: true,
+        category: { select: { name: true } },
+        party: { select: { name: true } },
       },
     });
   }
