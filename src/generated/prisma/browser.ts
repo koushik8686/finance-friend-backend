@@ -42,3 +42,8 @@ export type Party = Prisma.PartyModel
  * 
  */
 export type Records = Prisma.RecordsModel
+/**
+ * Model Events
+ * 
+ */
+export type Events = Prisma.EventsModel

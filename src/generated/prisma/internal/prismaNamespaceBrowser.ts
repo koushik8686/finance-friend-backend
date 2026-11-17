@@ -55,7 +55,8 @@ export const ModelName = {
   Transactions: 'Transactions',
   Categories: 'Categories',
   Party: 'Party',
-  Records: 'Records'
+  Records: 'Records',
+  Events: 'Events'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -140,6 +141,16 @@ export const RecordsScalarFieldEnum = {
 } as const
 
 export type RecordsScalarFieldEnum = (typeof RecordsScalarFieldEnum)[keyof typeof RecordsScalarFieldEnum]
+
+
+export const EventsScalarFieldEnum = {
+  id: 'id',
+  sender: 'sender',
+  createdAt: 'createdAt',
+  body: 'body'
+} as const
+
+export type EventsScalarFieldEnum = (typeof EventsScalarFieldEnum)[keyof typeof EventsScalarFieldEnum]
 
 
 export const SortOrder = {

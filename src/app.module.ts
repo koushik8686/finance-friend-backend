@@ -5,11 +5,12 @@ import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { RecordsModule } from './records/records.module';
+import { EventsModule } from './events/events.module';
 import 'dotenv/config';
 
 @Module({
   controllers: [AppController],
   providers: [AppService],
-  imports: [DatabaseModule, UsersModule, TransactionsModule, RecordsModule],
+  imports: [DatabaseModule, UsersModule, TransactionsModule, RecordsModule, EventsModule],
 })
 export class AppModule {}
